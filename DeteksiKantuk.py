@@ -10,7 +10,7 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades
                                      + 'haarcascade_frontalface_default.xml')
 eye_cascade = cv2.CascadeClassifier(cv2.data.haarcascades
                                     + 'haarcascade_eye.xml')
-model = load_model(r'C:\Users\tirmi\Downloads\kantuk\Driver-Drowsiness-Detection\models\model.h5')
+model = load_model(r'C:\Users\tirmi\Downloads\Drowsiness-Haar-Cascade\models\model.h5')
 
 #mixer.init()
 #sound= mixer.Sound(r'F:\Deep Learning\Drowsiness Detection\alarm.wav')
@@ -44,7 +44,7 @@ while True:
         
         # if eyes are closed
         if prediction[0]<0.50:
-            cv2.putText(frame,'Eyes Close',(30,height-20),
+            cv2.putText(frame,'Mata Tertutup',(30,height-20),
                         fontFace=cv2.FONT_HERSHEY_COMPLEX_SMALL,
                         fontScale=1,color=(255,255,255),
                        thickness=1,lineType=cv2.LINE_AA)
@@ -54,7 +54,7 @@ while True:
                        thickness=1,lineType=cv2.LINE_AA)
             Score=Score+1
             if(Score>4):
-                cv2.putText(frame,'Driver Drowsy!!!',(30,height-90),
+                cv2.putText(frame,'Mengantuk!',(30,height-90),
                             fontFace=cv2.FONT_HERSHEY_COMPLEX_SMALL,
                             fontScale=1,color=(0,0,255),
                        thickness=1,lineType=cv2.LINE_AA)
@@ -68,7 +68,7 @@ while True:
             
         # if eyes are open
         elif prediction[0]>0.80:
-            cv2.putText(frame,'Eyes Open',(30,height-50),
+            cv2.putText(frame,'EMata Terbuka',(30,height-50),
                         fontFace=cv2.FONT_HERSHEY_COMPLEX_SMALL,
                         fontScale=1,color=(0,255,0),
                        thickness=1,lineType=cv2.LINE_AA)
@@ -81,7 +81,7 @@ while True:
                 Score=0
             
         
-    cv2.imshow('frame',frame)
+    cv2.imshow('Deteksi Kantuk',frame)
     if cv2.waitKey(33) & 0xFF==ord('q'):
         break
         
